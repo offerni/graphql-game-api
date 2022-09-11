@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo"
-	"github.com/offerni/graphqllearning"
 	"github.com/offerni/graphqllearning/game"
 )
 
@@ -12,7 +11,7 @@ var games []map[string]*FetchGameResponse
 
 func FetchGame(c echo.Context) error {
 	id := c.Param("id")
-	if id != graphqllearning.GamePublicID {
+	if id == "" {
 		return c.JSON(http.StatusUnprocessableEntity, "ID IS REQUIRED")
 	}
 

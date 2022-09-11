@@ -5,26 +5,18 @@ import (
 	"fmt"
 
 	"github.com/offerni/graphqllearning"
+	"github.com/offerni/graphqllearning/mocks"
 )
 
 func FetchGamesByStoreID(c context.Context, storeID string) ([]*graphqllearning.Game, error) {
-	if storeID != graphqllearning.StorePublicID {
+	if storeID == "" {
 		return nil, fmt.Errorf("NOT FOUND")
 	}
 
-	return []*graphqllearning.Game{
-			{
-				ID:      GamePublicID,
-				StoreID: graphqllearning.StorePublicID,
-				Name:    "Satisfactory",
-				Price:   "19.99",
-			},
-			{
-				ID:      GamePublicID,
-				StoreID: graphqllearning.StorePublicID,
-				Name:    "The Wicher",
-				Price:   "19.99",
-			},
-		},
-		nil
+	games, err := mocks.FindGameByStoreByID(storeID)
+	if err != nil {
+		return nil, fmt.Errorf("NO STORE")
+	}
+
+	return games, nil
 }

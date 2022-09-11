@@ -53,7 +53,7 @@ func (r *queryResolver) Store(ctx context.Context, id string) (*model.Store, err
 func (r *storeResolver) Games(ctx context.Context, obj *model.Store) ([]*model.Game, error) {
 	res, err := game.FetchGamesByStoreID(ctx, obj.ID)
 	if err != nil {
-		return nil, fmt.Errorf("ERROR: STORE NOT FOUND")
+		return nil, fmt.Errorf("ERROR: GAMES NOT FOUND")
 	}
 
 	games := []*model.Game{}

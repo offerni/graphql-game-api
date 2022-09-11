@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo"
-	"github.com/offerni/graphqllearning"
 	"github.com/offerni/graphqllearning/store"
 )
 
@@ -12,7 +11,7 @@ var stores []map[string]*FetchStoreResponse
 
 func FetchStore(c echo.Context) error {
 	id := c.Param("id")
-	if id != graphqllearning.StorePublicID {
+	if id == "" {
 		return c.JSON(http.StatusUnprocessableEntity, "ID IS REQUIRED")
 	}
 

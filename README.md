@@ -8,8 +8,8 @@ Open `http://localhost:8080/` to use the REST api,
 - REST:
 
 ```
-  http://localhost:8080/stores/asdfg
-  http://localhost:8080/stores/qwerty
+  http://localhost:8080/stores/steam
+  http://localhost:8080/stores/1
 ```
 
 - GraphQL:

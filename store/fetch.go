@@ -5,17 +5,18 @@ import (
 	"fmt"
 
 	"github.com/offerni/graphqllearning"
+	"github.com/offerni/graphqllearning/mocks"
 )
 
-const StorePublicID string = "asdfg"
-
 func Fetch(c context.Context, id string) (*graphqllearning.Store, error) {
-	if id != StorePublicID {
+	if id == "" {
 		return nil, fmt.Errorf("NO STORE")
 	}
 
-	return &graphqllearning.Store{
-		ID:   StorePublicID,
-		Name: "Steam",
-	}, nil
+	store, err := mocks.FindStoreByID(id)
+	if err != nil {
+		return nil, fmt.Errorf("NO STORE")
+	}
+
+	return store, nil
 }

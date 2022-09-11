@@ -4,12 +4,11 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo"
-	"github.com/offerni/graphqllearning"
 	"github.com/offerni/graphqllearning/game"
 )
 
 func FetchGamesByStoreID(c echo.Context, storeID string) error {
-	if storeID != graphqllearning.StorePublicID {
+	if storeID == "" {
 		return c.JSON(http.StatusUnprocessableEntity, "STORE ID IS REQUIRED")
 	}
 
