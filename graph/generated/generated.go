@@ -10,9 +10,10 @@ import (
 	"strconv"
 	"sync"
 	"sync/atomic"
+
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/introspection"
-	"github.com/offerni/graphql-learning/graph/model"
+	"github.com/offerni/graphqllearning/graph/model"
 	gqlparser "github.com/vektah/gqlparser/v2"
 	"github.com/vektah/gqlparser/v2/ast"
 )
@@ -606,7 +607,7 @@ func (ec *executionContext) _Mutation_CreateStore(ctx context.Context, field gra
 	}
 	res := resTmp.(*model.Store)
 	fc.Result = res
-	return ec.marshalNStore2ᚖapitestᚋgraphᚋmodelᚐStore(ctx, field.Selections, res)
+	return ec.marshalNStore2ᚖgithubᚗcomᚋofferniᚋgraphqllearningᚋgraphᚋmodelᚐStore(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_CreateStore(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -669,7 +670,7 @@ func (ec *executionContext) _Mutation_CreateGame(ctx context.Context, field grap
 	}
 	res := resTmp.(*model.Game)
 	fc.Result = res
-	return ec.marshalNGame2ᚖapitestᚋgraphᚋmodelᚐGame(ctx, field.Selections, res)
+	return ec.marshalNGame2ᚖgithubᚗcomᚋofferniᚋgraphqllearningᚋgraphᚋmodelᚐGame(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_CreateGame(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -731,7 +732,7 @@ func (ec *executionContext) _Query_game(ctx context.Context, field graphql.Colle
 	}
 	res := resTmp.(*model.Game)
 	fc.Result = res
-	return ec.marshalOGame2ᚖapitestᚋgraphᚋmodelᚐGame(ctx, field.Selections, res)
+	return ec.marshalOGame2ᚖgithubᚗcomᚋofferniᚋgraphqllearningᚋgraphᚋmodelᚐGame(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_game(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -793,7 +794,7 @@ func (ec *executionContext) _Query_store(ctx context.Context, field graphql.Coll
 	}
 	res := resTmp.(*model.Store)
 	fc.Result = res
-	return ec.marshalOStore2ᚖapitestᚋgraphᚋmodelᚐStore(ctx, field.Selections, res)
+	return ec.marshalOStore2ᚖgithubᚗcomᚋofferniᚋgraphqllearningᚋgraphᚋmodelᚐStore(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_store(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1070,7 +1071,7 @@ func (ec *executionContext) _Store_games(ctx context.Context, field graphql.Coll
 	}
 	res := resTmp.([]*model.Game)
 	fc.Result = res
-	return ec.marshalOGame2ᚕᚖapitestᚋgraphᚋmodelᚐGameᚄ(ctx, field.Selections, res)
+	return ec.marshalOGame2ᚕᚖgithubᚗcomᚋofferniᚋgraphqllearningᚋgraphᚋmodelᚐGameᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Store_games(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -3441,11 +3442,11 @@ func (ec *executionContext) marshalNBoolean2bool(ctx context.Context, sel ast.Se
 	return res
 }
 
-func (ec *executionContext) marshalNGame2apitestᚋgraphᚋmodelᚐGame(ctx context.Context, sel ast.SelectionSet, v model.Game) graphql.Marshaler {
+func (ec *executionContext) marshalNGame2githubᚗcomᚋofferniᚋgraphqllearningᚋgraphᚋmodelᚐGame(ctx context.Context, sel ast.SelectionSet, v model.Game) graphql.Marshaler {
 	return ec._Game(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNGame2ᚖapitestᚋgraphᚋmodelᚐGame(ctx context.Context, sel ast.SelectionSet, v *model.Game) graphql.Marshaler {
+func (ec *executionContext) marshalNGame2ᚖgithubᚗcomᚋofferniᚋgraphqllearningᚋgraphᚋmodelᚐGame(ctx context.Context, sel ast.SelectionSet, v *model.Game) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -3455,11 +3456,11 @@ func (ec *executionContext) marshalNGame2ᚖapitestᚋgraphᚋmodelᚐGame(ctx c
 	return ec._Game(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalNStore2apitestᚋgraphᚋmodelᚐStore(ctx context.Context, sel ast.SelectionSet, v model.Store) graphql.Marshaler {
+func (ec *executionContext) marshalNStore2githubᚗcomᚋofferniᚋgraphqllearningᚋgraphᚋmodelᚐStore(ctx context.Context, sel ast.SelectionSet, v model.Store) graphql.Marshaler {
 	return ec._Store(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNStore2ᚖapitestᚋgraphᚋmodelᚐStore(ctx context.Context, sel ast.SelectionSet, v *model.Store) graphql.Marshaler {
+func (ec *executionContext) marshalNStore2ᚖgithubᚗcomᚋofferniᚋgraphqllearningᚋgraphᚋmodelᚐStore(ctx context.Context, sel ast.SelectionSet, v *model.Store) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -3763,7 +3764,7 @@ func (ec *executionContext) marshalOBoolean2ᚖbool(ctx context.Context, sel ast
 	return res
 }
 
-func (ec *executionContext) marshalOGame2ᚕᚖapitestᚋgraphᚋmodelᚐGameᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.Game) graphql.Marshaler {
+func (ec *executionContext) marshalOGame2ᚕᚖgithubᚗcomᚋofferniᚋgraphqllearningᚋgraphᚋmodelᚐGameᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.Game) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -3790,7 +3791,7 @@ func (ec *executionContext) marshalOGame2ᚕᚖapitestᚋgraphᚋmodelᚐGameᚄ
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNGame2ᚖapitestᚋgraphᚋmodelᚐGame(ctx, sel, v[i])
+			ret[i] = ec.marshalNGame2ᚖgithubᚗcomᚋofferniᚋgraphqllearningᚋgraphᚋmodelᚐGame(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -3810,14 +3811,14 @@ func (ec *executionContext) marshalOGame2ᚕᚖapitestᚋgraphᚋmodelᚐGameᚄ
 	return ret
 }
 
-func (ec *executionContext) marshalOGame2ᚖapitestᚋgraphᚋmodelᚐGame(ctx context.Context, sel ast.SelectionSet, v *model.Game) graphql.Marshaler {
+func (ec *executionContext) marshalOGame2ᚖgithubᚗcomᚋofferniᚋgraphqllearningᚋgraphᚋmodelᚐGame(ctx context.Context, sel ast.SelectionSet, v *model.Game) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._Game(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOStore2ᚖapitestᚋgraphᚋmodelᚐStore(ctx context.Context, sel ast.SelectionSet, v *model.Store) graphql.Marshaler {
+func (ec *executionContext) marshalOStore2ᚖgithubᚗcomᚋofferniᚋgraphqllearningᚋgraphᚋmodelᚐStore(ctx context.Context, sel ast.SelectionSet, v *model.Store) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}

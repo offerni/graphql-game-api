@@ -1,4 +1,4 @@
-module github.com/offerni/graphql-learning
+module github.com/offerni/graphqllearning
 
 go 1.19
 

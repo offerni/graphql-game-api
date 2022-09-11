@@ -7,9 +7,11 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/offerni/graphql-learning/graph/generated"
-	"github.com/offerni/graphql-learning/graph/model"
-	"github.com/offerni/graphql-learning/http"
+	"github.com/offerni/graphqllearning/game"
+	"github.com/offerni/graphqllearning/graph/generated"
+	"github.com/offerni/graphqllearning/graph/model"
+	"github.com/offerni/graphqllearning/http"
+	"github.com/offerni/graphqllearning/store"
 )
 
 // CreateStore is the resolver for the CreateStore field.
@@ -24,7 +26,7 @@ func (r *mutationResolver) CreateGame(ctx context.Context, id string) (*model.Ga
 
 // Game is the resolver for the game field.
 func (r *queryResolver) Game(ctx context.Context, id string) (*model.Game, error) {
-	res, err := http.FetchGame(ctx, id)
+	res, err := game.Fetch(ctx, id)
 	if err != nil {
 		return nil, fmt.Errorf("ERROR: GAME NOT FOUND")
 	}
@@ -37,7 +39,7 @@ func (r *queryResolver) Game(ctx context.Context, id string) (*model.Game, error
 
 // Store is the resolver for the store field.
 func (r *queryResolver) Store(ctx context.Context, id string) (*model.Store, error) {
-	res, err := http.FetchStore(ctx, id)
+	res, err := store.Fetch(ctx, id)
 	if err != nil {
 		return nil, fmt.Errorf("ERROR: STORE NOT FOUND")
 	}
