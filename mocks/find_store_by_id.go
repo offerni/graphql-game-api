@@ -7,7 +7,9 @@ import (
 )
 
 // not ideal but just for testing ;)
-var stores map[string]*graphqllearning.Store
+var (
+	stores map[string]*graphqllearning.Store
+)
 
 func FindStoreByID(id string) (*graphqllearning.Store, error) {
 

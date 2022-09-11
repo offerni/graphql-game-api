@@ -57,13 +57,25 @@ func initRESTServer() {
 	}
 
 	e := echo.New()
-	e.GET("/", apiHttp.Health)
-	e.GET("games/:id", apiHttp.FetchGame)
-	e.GET("stores/:id", apiHttp.FetchStore)
+	setHttpRoutes(e)
 
 	log.Printf("connect to http://localhost:%s/ for the REST API Server", port)
 	if err := e.Start(":8080"); err != http.ErrServerClosed {
 		log.Fatal(err)
 	}
 
+}
+
+// TODO extract into a different file
+func setHttpRoutes(e *echo.Echo) {
+	e.GET("/", apiHttp.Health)
+
+	// Stores
+	stores := e.Group("stores")
+	stores.GET("/:id", apiHttp.FetchStore)
+	stores.POST("", apiHttp.CreateStore)
+
+	// Games
+	games := e.Group("games")
+	games.GET("/:id", apiHttp.FetchGame)
 }
