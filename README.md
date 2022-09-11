@@ -10,13 +10,14 @@ Open `http://localhost:8080/` to use the REST api,
 
 - Examples:
 
-  - REST Endpoints:
+  ##  REST:
+  
+  - Stores
 
     - GET
 
       ```
         http://localhost:8080/stores/steam
-        http://localhost:8080/games/1
       ```
 
     - POST
@@ -32,10 +33,33 @@ Open `http://localhost:8080/` to use the REST api,
             "name": "Cool Store"
         }
       ```
+  - Games
 
-  - GraphQL:
+      - GET
 
-    Open the GraphQL playground on `http://localhost:8081/` and use the query below
+        ```
+          http://localhost:8080/games/1
+        ```
+
+      - POST
+
+        ```
+          http://localhost:8080/games
+        ```
+
+        - Body
+        
+        ```
+        {
+          "name": "The last of us",
+          "store_id": "steam",
+          "price": "25.98"
+        }
+        ```
+
+  ## GraphQL:
+
+    Open `http://localhost:8081/` and use the GraphQL playground
 
     ```
     query {
