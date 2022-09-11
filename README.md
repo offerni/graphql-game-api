@@ -1,6 +1,7 @@
 # graphql-learning using gqlgen
 
 - example
+  Open the GraphQL playground on `http://localhost:8081/` and use the query below
 
 ```
 query {
