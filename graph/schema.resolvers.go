@@ -4,11 +4,12 @@ package graph
 // will be copied through when generating and any unknown code will be moved to the end.
 
 import (
-	"apitest/graph/generated"
-	"apitest/graph/model"
-	"apitest/http"
 	"context"
 	"fmt"
+
+	"github.com/offerni/graphql-learning/graph/generated"
+	"github.com/offerni/graphql-learning/graph/model"
+	"github.com/offerni/graphql-learning/http"
 )
 
 // CreateStore is the resolver for the CreateStore field.

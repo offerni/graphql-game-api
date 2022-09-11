@@ -1,4 +1,4 @@
-module apitest
+module github.com/offerni/graphql-learning
 
 go 1.19
 
