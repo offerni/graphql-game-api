@@ -15,7 +15,21 @@ import (
 
 // CreateGame is the resolver for the CreateGame field.
 func (r *mutationResolver) CreateGame(ctx context.Context, opts model.NewGame) (*model.Game, error) {
-	panic(fmt.Errorf("not implemented: CreateStore - CreateStore"))
+	res, err := game.Create(ctx, game.CreateOpts{
+		Name:    opts.Name,
+		StoreID: opts.StoreID,
+		Price:   opts.Price,
+	})
+	if err != nil {
+		return nil, fmt.Errorf("ERROR: STORE NOT CREATED")
+	}
+
+	return &model.Game{
+		ID:      res.ID,
+		Name:    res.Name,
+		StoreID: res.StoreID,
+		Price:   res.Price,
+	}, nil
 }
 
 // CreateStore is the resolver for the CreateStore field.

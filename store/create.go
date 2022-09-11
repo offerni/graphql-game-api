@@ -9,7 +9,7 @@ import (
 )
 
 func Create(c context.Context, opts CreateOpts) (*graphqllearning.Store, error) {
-	store, err := mocks.CreateStore(mocks.CreateOpts{
+	store, err := mocks.CreateStore(mocks.CreateStoreOpts{
 		Name: opts.Name,
 	})
 	if err != nil {

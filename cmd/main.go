@@ -78,4 +78,5 @@ func setHttpRoutes(e *echo.Echo) {
 	// Games
 	games := e.Group("games")
 	games.GET("/:id", apiHttp.FetchGame)
+	games.POST("", apiHttp.CreateGame)
 }

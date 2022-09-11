@@ -22,7 +22,7 @@ Open `http://localhost:8080/` to use the REST api,
     - POST
 
       ```
-        http://localhost:8080/store
+        http://localhost:8080/stores
       ```
 
       - Body
@@ -61,6 +61,17 @@ Open `http://localhost:8080/` to use the REST api,
     }
     ```
 
-```
-
-```
+    ```
+    mutation CreateGame {
+      CreateGame(opts: {
+        name: "The last of us part II"
+        store_id: "steam",
+        price: "58.66"
+      }) {
+        id,
+        name,
+        store_id,
+        price
+      }
+    }
+    ```

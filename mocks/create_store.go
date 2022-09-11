@@ -4,7 +4,7 @@ import (
 	"github.com/offerni/graphqllearning"
 )
 
-func CreateStore(opts CreateOpts) (*graphqllearning.Store, error) {
+func CreateStore(opts CreateStoreOpts) (*graphqllearning.Store, error) {
 	id := graphqllearning.RandomString(10)
 
 	stores[id] = &graphqllearning.Store{
@@ -15,6 +15,6 @@ func CreateStore(opts CreateOpts) (*graphqllearning.Store, error) {
 	return stores[id], nil
 }
 
-type CreateOpts struct {
+type CreateStoreOpts struct {
 	Name string
 }
