@@ -72,6 +72,7 @@ func setHttpRoutes(e *echo.Echo) {
 
 	// Stores
 	stores := e.Group("stores")
+	stores.GET("", apiHttp.FetchAllStores)
 	stores.GET("/:id", apiHttp.FetchStore)
 	stores.POST("", apiHttp.CreateStore)
 
