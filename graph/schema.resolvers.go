@@ -73,6 +73,25 @@ func (r *queryResolver) Store(ctx context.Context, id string) (*model.Store, err
 	}, nil
 }
 
+// Stores is the resolver for the stores field.
+func (r *queryResolver) Stores(ctx context.Context) ([]*model.Store, error) {
+	res, err := store.FetchAll(ctx)
+	if err != nil {
+		return nil, fmt.Errorf("ERROR: STORES NOT FOUND")
+	}
+
+	stores := []*model.Store{}
+	for _, store := range res {
+		stores = append(stores, &model.Store{
+			ID:   store.ID,
+			Name: store.Name,
+		})
+
+	}
+
+	return stores, nil
+}
+
 // Games is the resolver for the games field.
 func (r *storeResolver) Games(ctx context.Context, obj *model.Store) ([]*model.Game, error) {
 	res, err := game.FetchGamesByStoreID(ctx, obj.ID)
