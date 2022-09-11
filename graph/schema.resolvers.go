@@ -94,10 +94,7 @@ func (r *queryResolver) Stores(ctx context.Context) ([]*model.Store, error) {
 
 // Games is the resolver for the games field.
 func (r *storeResolver) Games(ctx context.Context, obj *model.Store) ([]*model.Game, error) {
-	res, err := game.FetchGamesByStoreID(ctx, obj.ID)
-	if err != nil {
-		return nil, fmt.Errorf("ERROR: GAMES NOT FOUND")
-	}
+	res, _ := game.FetchGamesByStoreID(ctx, obj.ID)
 
 	games := []*model.Game{}
 
