@@ -54,7 +54,7 @@ type ComplexityRoot struct {
 
 	Mutation struct {
 		CreateGame  func(childComplexity int, id string) int
-		CreateStore func(childComplexity int, id string) int
+		CreateStore func(childComplexity int, name string) int
 	}
 
 	Query struct {
@@ -70,7 +70,7 @@ type ComplexityRoot struct {
 }
 
 type MutationResolver interface {
-	CreateStore(ctx context.Context, id string) (*model.Store, error)
+	CreateStore(ctx context.Context, name string) (*model.Store, error)
 	CreateGame(ctx context.Context, id string) (*model.Game, error)
 }
 type QueryResolver interface {
@@ -146,7 +146,7 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 			return 0, false
 		}
 
-		return e.complexity.Mutation.CreateStore(childComplexity, args["id"].(string)), true
+		return e.complexity.Mutation.CreateStore(childComplexity, args["name"].(string)), true
 
 	case "Query.game":
 		if e.complexity.Query.Game == nil {
@@ -279,7 +279,7 @@ type Query {
 }
 
 type Mutation {
-  CreateStore(id: String!): Store!
+  CreateStore(name: String!): Store!
   CreateGame(id: String!): Game!
 }
 `, BuiltIn: false},
@@ -309,14 +309,14 @@ func (ec *executionContext) field_Mutation_CreateStore_args(ctx context.Context,
 	var err error
 	args := map[string]interface{}{}
 	var arg0 string
-	if tmp, ok := rawArgs["id"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("id"))
+	if tmp, ok := rawArgs["name"]; ok {
+		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("name"))
 		arg0, err = ec.unmarshalNString2string(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
 	}
-	args["id"] = arg0
+	args["name"] = arg0
 	return args, nil
 }
 
@@ -593,7 +593,7 @@ func (ec *executionContext) _Mutation_CreateStore(ctx context.Context, field gra
 	}()
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return ec.resolvers.Mutation().CreateStore(rctx, fc.Args["id"].(string))
+		return ec.resolvers.Mutation().CreateStore(rctx, fc.Args["name"].(string))
 	})
 	if err != nil {
 		ec.Error(ctx, err)

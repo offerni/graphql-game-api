@@ -14,7 +14,7 @@ import (
 )
 
 // CreateStore is the resolver for the CreateStore field.
-func (r *mutationResolver) CreateStore(ctx context.Context, id string) (*model.Store, error) {
+func (r *mutationResolver) CreateStore(ctx context.Context, name string) (*model.Store, error) {
 	panic(fmt.Errorf("not implemented: CreateStore - CreateStore"))
 }
 

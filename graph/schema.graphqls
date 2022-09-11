@@ -17,6 +17,6 @@ type Query {
 }
 
 type Mutation {
-  CreateStore(id: String!): Store!
+  CreateStore(name: String!): Store!
   CreateGame(id: String!): Game!
 }
