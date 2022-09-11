@@ -1,13 +1,8 @@
 package mocks
 
-import (
-	"fmt"
+import "github.com/offerni/graphqllearning"
 
-	"github.com/offerni/graphqllearning"
-)
-
-// not ideal but just for testing ;)
-var games = map[string]*graphqllearning.Game{
+var Games = map[string]*graphqllearning.Game{
 	"1": {
 		ID:      "1",
 		StoreID: "steam",
@@ -35,12 +30,4 @@ var games = map[string]*graphqllearning.Game{
 		Name:    "Tony Hawk's Pro Skater",
 		Price:   "35.35",
 	},
-}
-
-func FindGameByID(id string) (*graphqllearning.Game, error) {
-	if games[id] == nil {
-		return nil, fmt.Errorf("GAME DOESN'T EXIST")
-	}
-
-	return games[id], nil
 }

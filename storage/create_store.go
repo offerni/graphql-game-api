@@ -1,18 +1,19 @@
-package mocks
+package storage
 
 import (
 	"github.com/offerni/graphqllearning"
+	"github.com/offerni/graphqllearning/mocks"
 )
 
 func CreateStore(opts CreateStoreOpts) (*graphqllearning.Store, error) {
 	id := graphqllearning.RandomString(10)
 
-	stores[id] = &graphqllearning.Store{
+	mocks.Stores[id] = &graphqllearning.Store{
 		ID:   id,
 		Name: opts.Name,
 	}
 
-	return stores[id], nil
+	return mocks.Stores[id], nil
 }
 
 type CreateStoreOpts struct {

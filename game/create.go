@@ -5,11 +5,11 @@ import (
 	"fmt"
 
 	"github.com/offerni/graphqllearning"
-	"github.com/offerni/graphqllearning/mocks"
+	"github.com/offerni/graphqllearning/storage"
 )
 
 func Create(c context.Context, opts CreateOpts) (*graphqllearning.Game, error) {
-	game, err := mocks.CreateGame(mocks.CreateGameOpts{
+	game, err := storage.CreateGame(storage.CreateGameOpts{
 		Name:    opts.Name,
 		StoreID: opts.StoreID,
 		Price:   opts.Price,

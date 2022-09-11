@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/offerni/graphqllearning"
-	"github.com/offerni/graphqllearning/mocks"
+	"github.com/offerni/graphqllearning/storage"
 )
 
 func Fetch(c context.Context, id string) (*graphqllearning.Store, error) {
@@ -13,7 +13,7 @@ func Fetch(c context.Context, id string) (*graphqllearning.Store, error) {
 		return nil, fmt.Errorf("NO STORE")
 	}
 
-	store, err := mocks.FindStoreByID(id)
+	store, err := storage.FindStoreByID(id)
 	if err != nil {
 		return nil, fmt.Errorf("NO STORE")
 	}

@@ -5,11 +5,11 @@ import (
 	"fmt"
 
 	"github.com/offerni/graphqllearning"
-	"github.com/offerni/graphqllearning/mocks"
+	storage "github.com/offerni/graphqllearning/storage"
 )
 
 func Create(c context.Context, opts CreateOpts) (*graphqllearning.Store, error) {
-	store, err := mocks.CreateStore(mocks.CreateStoreOpts{
+	store, err := storage.CreateStore(storage.CreateStoreOpts{
 		Name: opts.Name,
 	})
 	if err != nil {
