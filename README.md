@@ -2,16 +2,19 @@
 
 WIP, only hardcoded values for now
 
-- example
-  Open `http://localhost:8080/` to use the REST api,
-  -- examples:
+Open `http://localhost:8080/` to use the REST api,
 
-  ```
-    http://localhost:8080/stores/asdfg
-    http://localhost:8080/stores/qwerty
-  ```
+- examples:
+- REST:
 
-  Open the GraphQL playground on `http://localhost:8081/` and use the query below
+```
+  http://localhost:8080/stores/asdfg
+  http://localhost:8080/stores/qwerty
+```
+
+- GraphQL:
+
+Open the GraphQL playground on `http://localhost:8081/` and use the query below
 
 ```
 query {
