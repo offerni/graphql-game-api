@@ -4,23 +4,28 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo"
+	"github.com/offerni/graphqllearning"
+	"github.com/offerni/graphqllearning/game"
 )
-
-const GamePublicID string = "qwerty"
 
 var games []map[string]*FetchGameResponse
 
 func FetchGame(c echo.Context) error {
 	id := c.Param("id")
-	if id != GamePublicID {
+	if id != graphqllearning.GamePublicID {
+		return c.JSON(http.StatusUnprocessableEntity, "ID IS REQUIRED")
+	}
+
+	game, err := game.Fetch(c.Request().Context(), id)
+	if err != nil {
 		return c.JSON(http.StatusNotFound, "NOT FOUND")
 	}
 
 	return c.JSON(http.StatusOK, &FetchGameResponse{
-		ID:      GamePublicID,
-		StoreID: StorePublicID,
-		Name:    "The Wicher",
-		Price:   "19.99",
+		ID:      game.ID,
+		StoreID: game.StoreID,
+		Name:    game.Name,
+		Price:   game.Price,
 	})
 }
 

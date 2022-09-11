@@ -3,21 +3,18 @@ package store
 import (
 	"context"
 	"fmt"
+
+	"github.com/offerni/graphqllearning"
 )
 
 const StorePublicID string = "asdfg"
 
-type Store struct {
-	ID   string
-	Name string
-}
-
-func Fetch(c context.Context, id string) (*Store, error) {
+func Fetch(c context.Context, id string) (*graphqllearning.Store, error) {
 	if id != StorePublicID {
 		return nil, fmt.Errorf("NO STORE")
 	}
 
-	return &Store{
+	return &graphqllearning.Store{
 		ID:   StorePublicID,
 		Name: "Steam",
 	}, nil

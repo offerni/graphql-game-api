@@ -10,7 +10,6 @@ import (
 	"github.com/offerni/graphqllearning/game"
 	"github.com/offerni/graphqllearning/graph/generated"
 	"github.com/offerni/graphqllearning/graph/model"
-	"github.com/offerni/graphqllearning/http"
 	"github.com/offerni/graphqllearning/store"
 )
 
@@ -52,14 +51,14 @@ func (r *queryResolver) Store(ctx context.Context, id string) (*model.Store, err
 
 // Games is the resolver for the games field.
 func (r *storeResolver) Games(ctx context.Context, obj *model.Store) ([]*model.Game, error) {
-	res, err := http.FetchGamesByStoreID(ctx, obj.ID)
+	res, err := game.FetchGamesByStoreID(ctx, obj.ID)
 	if err != nil {
 		return nil, fmt.Errorf("ERROR: STORE NOT FOUND")
 	}
 
 	games := []*model.Game{}
 
-	for _, game := range res.Data {
+	for _, game := range res {
 		games = append(games, &model.Game{
 			ID:      game.ID,
 			StoreID: game.StoreID,

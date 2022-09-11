@@ -4,19 +4,19 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/offerni/graphqllearning/http"
+	"github.com/offerni/graphqllearning"
 )
 
 const GamePublicID string = "qwerty"
 
-func Fetch(c context.Context, id string) (*Game, error) {
+func Fetch(c context.Context, id string) (*graphqllearning.Game, error) {
 	if id != GamePublicID {
 		return nil, fmt.Errorf("NOT FOUND")
 	}
 
-	return &Game{
+	return &graphqllearning.Game{
 		ID:      GamePublicID,
-		StoreID: http.StorePublicID,
+		StoreID: graphqllearning.StorePublicID,
 		Name:    "The Wicher",
 		Price:   "19.99",
 	}, nil

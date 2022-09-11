@@ -1,33 +1,33 @@
 package http
 
 import (
-	"context"
-	"fmt"
+	"net/http"
+
+	"github.com/labstack/echo"
+	"github.com/offerni/graphqllearning"
+	"github.com/offerni/graphqllearning/game"
 )
 
-type FetchGameByStoreIDResponse struct {
-	Data []*FetchGameResponse
-}
-
-func FetchGamesByStoreID(c context.Context, storeID string) (*FetchGameByStoreIDResponse, error) {
-	if storeID != StorePublicID {
-		return nil, fmt.Errorf("NOT FOUND")
+func FetchGamesByStoreID(c echo.Context, storeID string) error {
+	if storeID != graphqllearning.StorePublicID {
+		return c.JSON(http.StatusUnprocessableEntity, "STORE ID IS REQUIRED")
 	}
 
-	return &FetchGameByStoreIDResponse{
-		Data: []*FetchGameResponse{
-			{
-				ID:      GamePublicID,
-				StoreID: StorePublicID,
-				Name:    "Satisfactory",
-				Price:   "19.99",
-			},
-			{
-				ID:      GamePublicID,
-				StoreID: StorePublicID,
-				Name:    "The Wicher",
-				Price:   "19.99",
-			},
-		},
-	}, nil
+	resp, err := game.FetchGamesByStoreID(c.Request().Context(), storeID)
+	if err != nil {
+		return c.JSON(http.StatusNotFound, "NOT FOUND")
+	}
+
+	games := []*FetchGameResponse{}
+	for _, game := range resp {
+		games = append(games, &FetchGameResponse{
+			ID:      game.ID,
+			StoreID: game.StoreID,
+			Name:    game.Name,
+			Price:   game.Price,
+		})
+	}
+
+	return c.JSON(http.StatusOK, games)
+
 }

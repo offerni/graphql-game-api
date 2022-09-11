@@ -4,39 +4,27 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/offerni/graphqllearning/http"
+	"github.com/offerni/graphqllearning"
 )
 
-type FetchGameByStoreIDResponse struct {
-	Data []*Game
-}
-
-func FetchGamesByStoreID(c context.Context, storeID string) (*FetchGameByStoreIDResponse, error) {
-	if storeID != http.StorePublicID {
+func FetchGamesByStoreID(c context.Context, storeID string) ([]*graphqllearning.Game, error) {
+	if storeID != graphqllearning.StorePublicID {
 		return nil, fmt.Errorf("NOT FOUND")
 	}
 
-	return &FetchGameByStoreIDResponse{
-		Data: []*Game{
+	return []*graphqllearning.Game{
 			{
 				ID:      GamePublicID,
-				StoreID: http.StorePublicID,
+				StoreID: graphqllearning.StorePublicID,
 				Name:    "Satisfactory",
 				Price:   "19.99",
 			},
 			{
 				ID:      GamePublicID,
-				StoreID: http.StorePublicID,
+				StoreID: graphqllearning.StorePublicID,
 				Name:    "The Wicher",
 				Price:   "19.99",
 			},
 		},
-	}, nil
-}
-
-type Game struct {
-	ID      string
-	StoreID string
-	Name    string
-	Price   string
+		nil
 }
