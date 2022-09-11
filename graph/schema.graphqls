@@ -1,14 +1,14 @@
 type Store {
+  games: [Game!]
   id: String!
   name: String!
-  games: [Game!]
 }
 
 type Game {
   id: String!
-  store_id: String!
   name: String!
   price: String!
+  store_id: String!
 }
 
 type Query {
@@ -16,7 +16,17 @@ type Query {
   store(id: String!): Store
 }
 
+input NewStore {
+  name: String!
+}
+
+input NewGame {
+  name: String!
+  price: String!
+  store_id: String!
+}
+
 type Mutation {
-  CreateStore(name: String!): Store!
-  CreateGame(id: String!): Game!
+  CreateGame(opts: NewGame!): Game!
+  CreateStore(opts: NewStore!): Store!
 }

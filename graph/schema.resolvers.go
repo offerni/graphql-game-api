@@ -13,14 +13,24 @@ import (
 	"github.com/offerni/graphqllearning/store"
 )
 
-// CreateStore is the resolver for the CreateStore field.
-func (r *mutationResolver) CreateStore(ctx context.Context, name string) (*model.Store, error) {
+// CreateGame is the resolver for the CreateGame field.
+func (r *mutationResolver) CreateGame(ctx context.Context, opts model.NewGame) (*model.Game, error) {
 	panic(fmt.Errorf("not implemented: CreateStore - CreateStore"))
 }
 
-// CreateGame is the resolver for the CreateGame field.
-func (r *mutationResolver) CreateGame(ctx context.Context, id string) (*model.Game, error) {
-	panic(fmt.Errorf("not implemented: CreateGame - CreateGame"))
+// CreateStore is the resolver for the CreateStore field.
+func (r *mutationResolver) CreateStore(ctx context.Context, opts model.NewStore) (*model.Store, error) {
+	res, err := store.Create(ctx, store.CreateOpts{
+		Name: opts.Name,
+	})
+	if err != nil {
+		return nil, fmt.Errorf("ERROR: STORE NOT CREATED")
+	}
+
+	return &model.Store{
+		ID:   res.ID,
+		Name: res.Name,
+	}, nil
 }
 
 // Game is the resolver for the game field.
