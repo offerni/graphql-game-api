@@ -9,8 +9,6 @@ import (
 // not ideal but just for testing ;)
 var games map[string]*graphqllearning.Game
 
-// not ideal but just for testing ;)
-
 func FindGameByID(id string) (*graphqllearning.Game, error) {
 	games = make(map[string]*graphqllearning.Game)
 

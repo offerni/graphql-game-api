@@ -15,7 +15,7 @@ import (
 )
 
 const graphQLDefaultPort = "8081"
-const apiDefaultPort = "8080"
+const httpDefaultPort = "8080"
 
 func main() {
 	var wg sync.WaitGroup
@@ -51,9 +51,9 @@ func initGraphQLServer() {
 }
 
 func initRESTServer() {
-	port := os.Getenv("API_PORT")
+	port := os.Getenv("HTTP_PORT")
 	if port == "" {
-		port = apiDefaultPort
+		port = httpDefaultPort
 	}
 
 	e := echo.New()

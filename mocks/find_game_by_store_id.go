@@ -34,13 +34,6 @@ func FindGameByStoreByID(storeID string) ([]*graphqllearning.Game, error) {
 			Name:    "Subnautica",
 			Price:   "10.00",
 		},
-
-		{
-			ID:      "4",
-			StoreID: "epic",
-			Name:    "Tony Hawk's Pro Skater",
-			Price:   "35.35",
-		},
 	}
 
 	gamesByStore["epic"] = []*graphqllearning.Game{

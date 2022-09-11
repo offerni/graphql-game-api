@@ -7,8 +7,6 @@ import (
 	"github.com/offerni/graphqllearning/game"
 )
 
-var games []map[string]*FetchGameResponse
-
 func FetchGame(c echo.Context) error {
 	id := c.Param("id")
 	if id == "" {
