@@ -7,17 +7,12 @@ import (
 )
 
 // not ideal but just for testing ;)
-var gamesByStore map[string][]*graphqllearning.Game
-
-func FindGameByStoreByID(storeID string) ([]*graphqllearning.Game, error) {
-
-	gamesByStore = make(map[string][]*graphqllearning.Game)
-
-	gamesByStore["steam"] = []*graphqllearning.Game{
+var gamesByStore = map[string][]*graphqllearning.Game{
+	"steam": {
 		{
 			ID:      "1",
 			StoreID: "steam",
-			Name:    "Steam",
+			Name:    "The Witcher",
 			Price:   "19.99",
 		},
 
@@ -34,17 +29,19 @@ func FindGameByStoreByID(storeID string) ([]*graphqllearning.Game, error) {
 			Name:    "Subnautica",
 			Price:   "10.00",
 		},
-	}
+	},
 
-	gamesByStore["epic"] = []*graphqllearning.Game{
+	"epic": {
 		{
 			ID:      "4",
 			StoreID: "epic",
 			Name:    "Tony Hawk's Pro Skater",
 			Price:   "35.35",
 		},
-	}
+	},
+}
 
+func FindGameByStoreByID(storeID string) ([]*graphqllearning.Game, error) {
 	if gamesByStore[storeID] == nil {
 		return nil, fmt.Errorf("STORE DOESN'T EXIST")
 	}
