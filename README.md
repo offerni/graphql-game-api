@@ -18,7 +18,7 @@ Open the GraphQL playground on `http://localhost:8081/` and use the query below
 
 ```
 query {
-  store(id: "asdfg") {
+  store(id: "steam") {
     id,
     name,
     games{
