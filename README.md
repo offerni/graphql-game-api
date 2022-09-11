@@ -2,9 +2,14 @@
 
 Project spinning up concurrently an HTTP server with [echo](https://echo.labstack.com/) and a GraphQL server using [gqlgen](https://gqlgen.com/)
 
-`go run github.com/99designs/gqlgen generate` generates schema resolvers and handlers based on `schema.graphqls`
+To run the project run
+```
+  go run cmd/main.go
+```
+Or just `air` if you have it installed
 
-WIP, only hardcoded values for now
+
+`go run github.com/99designs/gqlgen generate` generates schema resolvers and handlers based on `schema.graphqls`
 
 Open `http://localhost:8080/` to use the REST api,
 
